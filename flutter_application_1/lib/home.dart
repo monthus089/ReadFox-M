@@ -29,7 +29,10 @@ class _HomeState extends State<Home> {
         bucket: bucket,
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(
+          Icons.shopping_cart,
+          color: currentTab == 0 ? Colors.white : Colors.white,
+        ),
         onPressed: () {},
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -56,14 +59,17 @@ class _HomeState extends State<Home> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.library_books,
-                          color: currentTab == 0 ? Colors.red : Colors.grey,
+                          Icons.call_to_action_rounded,
+                          color: currentTab == 0
+                              ? Color(0xFFc52b32)
+                              : Colors.black,
                         ),
                         Text(
                           'Library',
                           style: TextStyle(
-                              color:
-                                  currentTab == 0 ? Colors.red : Colors.grey),
+                              color: currentTab == 0
+                                  ? Color(0xFFc52b32)
+                                  : Colors.black),
                         )
                       ],
                     ),
@@ -80,14 +86,17 @@ class _HomeState extends State<Home> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.store_sharp,
-                          color: currentTab == 1 ? Colors.red : Colors.grey,
+                          Icons.storefront_outlined,
+                          color: currentTab == 1
+                              ? Color(0xFFc52b32)
+                              : Colors.black,
                         ),
                         Text(
                           'Store',
                           style: TextStyle(
-                              color:
-                                  currentTab == 1 ? Colors.red : Colors.grey),
+                              color: currentTab == 1
+                                  ? Color(0xFFc52b32)
+                                  : Colors.black),
                         )
                       ],
                     ),
@@ -109,14 +118,17 @@ class _HomeState extends State<Home> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.account_box_sharp,
-                          color: currentTab == 2 ? Colors.red : Colors.grey,
+                          Icons.account_box_outlined,
+                          color: currentTab == 2
+                              ? Color(0xFFc52b32)
+                              : Colors.black,
                         ),
                         Text(
                           'Account',
                           style: TextStyle(
-                              color:
-                                  currentTab == 2 ? Colors.red : Colors.grey),
+                              color: currentTab == 2
+                                  ? Color(0xFFc52b32)
+                                  : Colors.black),
                         )
                       ],
                     ),
@@ -133,14 +145,17 @@ class _HomeState extends State<Home> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.settings_applications_sharp,
-                          color: currentTab == 3 ? Colors.red : Colors.grey,
+                          Icons.settings,
+                          color: currentTab == 3
+                              ? Color(0xFFc52b32)
+                              : Colors.black,
                         ),
                         Text(
                           'Setting',
                           style: TextStyle(
-                              color:
-                                  currentTab == 3 ? Colors.red : Colors.grey),
+                              color: currentTab == 3
+                                  ? Color(0xFFc52b32)
+                                  : Colors.black),
                         )
                       ],
                     ),

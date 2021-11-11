@@ -9,7 +9,9 @@ class _SettingState extends State<Setting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Setting')),
+      appBar: AppBar(
+        title: Text('Setting'),
+      ),
       body: Center(
         child: Text('', style: TextStyle(fontSize: 40)),
       ),
