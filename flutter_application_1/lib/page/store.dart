@@ -13,26 +13,24 @@ class _StoreState extends State<Store> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 500,
-              decoration: BoxDecoration(
-                  color: Colors.red[300],
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.elliptical(200, 200),
-                      bottomRight: Radius.elliptical(300, 300))),
+              height: 440,
               child: Stack(
                 children: [
                   Container(
-                    height: 250,
+                    height: 305,
                     decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.elliptical(300, 300),
-                            bottomRight: Radius.elliptical(300, 300))),
+                      color: Colors.red,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.elliptical(300, 300),
+                        bottomRight: Radius.elliptical(300, 300),
+                      ),
+                    ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 15.0),
+                    padding: const EdgeInsets.only(top: 50.0),
                     child: Column(
                       children: [
                         Padding(
@@ -44,15 +42,11 @@ class _StoreState extends State<Store> {
                               Text(
                                 'Store',
                                 style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w400,
-                                ),
+                                    color: Colors.white, fontSize: 22),
                               ),
                             ],
                           ),
                         ),
-                        // ^ top bar //
                         Padding(
                           padding: const EdgeInsets.only(top: 10.0),
                           child: SizedBox(
@@ -60,41 +54,41 @@ class _StoreState extends State<Store> {
                           ),
                         ),
                         CarouselSlider.builder(
-                            height: 350,
-                            viewportFraction: .48,
-                            enableInfiniteScroll: true,
-                            itemCount: book.length - 5,
-                            realPage: 0,
-                            itemBuilder: (BuildContext context, int index) {
-                              Book books = book[index];
-                              return Container(
-                                width: 150,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      height: 230,
-                                      width: 150,
-                                      child: Image.asset(
-                                        books.imageUrl,
-                                        fit: BoxFit.fill,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey,
-                                        borderRadius: BorderRadius.circular(16),
-                                      ),
+                          height: 334,
+                          viewportFraction: .48,
+                          enlargeCenterPage: true,
+                          itemCount: book.length - 5,
+                          realPage: 0,
+                          itemBuilder: (BuildContext context, int index) {
+                            Book books = book[index];
+                            return Container(
+                              width: 150,
+                              //  color: Colors.blue,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    height: 200,
+                                    width: 150,
+                                    child: Image.asset(
+                                      books.imageUrl,
+                                      fit: BoxFit.fill,
                                     ),
-                                    SizedBox(height: 13),
-                                    Text(books.title),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(books.author)
-                                  ],
-                                ),
-                              );
-                            })
+                                  ),
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                  Text(books.title),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(books.author)
+                                ],
+                              ),
+                            );
+                          },
+                        )
                       ],
                     ),
                   )
@@ -104,7 +98,7 @@ class _StoreState extends State<Store> {
             Padding(
               padding: const EdgeInsets.only(left: 18.0),
               child: Text(
-                'New',
+                'Bestsellers',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
@@ -112,9 +106,110 @@ class _StoreState extends State<Store> {
               height: 10,
             ),
             Container(
-              color: Colors.red,
-              height: 200,
-            )
+              //  color: Colors.red,
+              height: 210,
+              child: ListView.builder(
+                  padding: EdgeInsets.only(left: 15),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 4,
+                  itemBuilder: (BuildContext context, int index) {
+                    Book books = book[index + 2];
+                    return Container(
+                      width: 150,
+                      height: 210,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 130,
+                            width: 100,
+                            child: Image.asset(
+                              books.imageUrl,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Text(
+                            books.title,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'by ${books.author}',
+                            style: TextStyle(fontSize: 12),
+                          )
+                        ],
+                      ),
+                    );
+                  }),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 18.0),
+              child: Text(
+                'Recently Viewed',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              //  color: Colors.red,
+              height: 210,
+              child: ListView.builder(
+                padding: EdgeInsets.only(left: 15),
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 3,
+                itemBuilder: (BuildContext context, int index) {
+                  Book books = book[index + 5];
+                  return Container(
+                    width: 150,
+                    height: 210,
+                    //  color: Colors.blue,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 130,
+                          width: 100,
+                          child: Image.asset(
+                            books.imageUrl,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          books.title,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'by ${books.author}',
+                          style: TextStyle(fontSize: 12),
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),

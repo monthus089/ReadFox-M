@@ -20,7 +20,7 @@ final List<Book> book = [
       title: 'The Time Travellers',
       author: 'Stride Lottie'),
   Book(
-      imageUrl: 'assets/Fatherhood.png',
+      imageUrl: 'assets/Fatherhood.jpg',
       title: 'The Zoo',
       author: 'Christopher Wilson'),
   Book(
