@@ -63,7 +63,6 @@ class _StoreState extends State<Store> {
                             Book books = book[index];
                             return Container(
                               width: 150,
-                              //  color: Colors.blue,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -71,11 +70,13 @@ class _StoreState extends State<Store> {
                                   Container(
                                     height: 200,
                                     width: 150,
-                                    child: Image.asset(
-                                      books.imageUrl,
-                                      fit: BoxFit.fill,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                                      image: DecorationImage(image:AssetImage(books.imageUrl),
+                                      fit: BoxFit.cover
+                                      ),
                                     ),
-                                  ),
+                                    ),
                                   SizedBox(
                                     height: 15,
                                   ),
