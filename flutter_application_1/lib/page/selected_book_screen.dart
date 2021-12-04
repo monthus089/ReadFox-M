@@ -19,7 +19,7 @@ class SelectedBookScreen extends StatelessWidget {
         height: 49,
         color: Colors.transparent,
         child: FlatButton(
-          color: kMainColor,
+          color: kRedColor,
           onPressed: () {},
           child: Text(
             'Add to Library',
