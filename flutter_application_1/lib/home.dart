@@ -68,7 +68,7 @@ class _HomeState extends State<Home> {
                           'Library',
                           style: TextStyle(
                               color: currentTab == 0
-                                  ? Color(0xFF2bc5be)
+                                  ? Color(0xFFc52b32)
                                   : Colors.black),
                         )
                       ],

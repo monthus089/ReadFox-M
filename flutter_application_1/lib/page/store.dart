@@ -1,6 +1,11 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/page/bookmodel.dart';
+import 'package:flutter_application_1/constants/color_constant.dart';
+import 'package:flutter_application_1/models/newbook_model.dart';
+import 'package:flutter_application_1/models/popularbook_model.dart';
+import 'package:flutter_application_1/page/selected_book_screen.dart';
+import 'package:flutter_application_1/widgets/custom_Tab_indicator.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Store extends StatefulWidget {
   @override
@@ -11,206 +16,212 @@ class _StoreState extends State<Store> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      body: Container(
+        child: ListView(
+          physics: BouncingScrollPhysics(),
+          children: <Widget>[
+            Padding(
+                padding: EdgeInsets.only(left: 25, top: 25),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Store',
+                      style: GoogleFonts.openSans(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: kGreyColor),
+                    ),
+                    Text(
+                      'ReadFox Store',
+                      style: GoogleFonts.openSans(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                          color: kBlackColor),
+                    )
+                  ],
+                )),
             Container(
-              height: 440,
+              height: 39,
+              margin: EdgeInsets.only(left: 25, right: 25, top: 18),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: kLightGreyColor),
               child: Stack(
-                children: [
-                  Container(
-                    height: 305,
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.elliptical(300, 300),
-                        bottomRight: Radius.elliptical(300, 300),
-                      ),
-                    ),
+                children: <Widget>[
+                  TextField(
+                    maxLengthEnforced: true,
+                    style: GoogleFonts.openSans(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: kBlackColor),
+                    decoration: InputDecoration(
+                        contentPadding:
+                            EdgeInsets.only(left: 19, right: 50, bottom: 8),
+                        border: InputBorder.none,
+                        hintText: 'Search...',
+                        hintStyle: GoogleFonts.openSans(
+                            fontSize: 12,
+                            color: kGreyColor,
+                            fontWeight: FontWeight.w600)),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 50.0),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(left: 20.0, right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Store',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 22),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10.0),
-                          child: SizedBox(
-                            height: 20,
-                          ),
-                        ),
-                        CarouselSlider.builder(
-                          height: 334,
-                          viewportFraction: .48,
-                          enlargeCenterPage: true,
-                          itemCount: book.length - 5,
-                          realPage: 0,
-                          itemBuilder: (BuildContext context, int index) {
-                            Book books = book[index];
-                            return Container(
-                              width: 150,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    height: 200,
-                                    width: 150,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                                      image: DecorationImage(image:AssetImage(books.imageUrl),
-                                      fit: BoxFit.cover
-                                      ),
-                                    ),
-                                    ),
-                                  SizedBox(
-                                    height: 15,
-                                  ),
-                                  Text(books.title),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(books.author)
-                                ],
-                              ),
-                            );
-                          },
-                        )
-                      ],
-                    ),
+                  Positioned(
+                    right: 0,
+                    child: SvgPicture.asset('assets/svg/background_search.svg'),
+                  ),
+                  Positioned(
+                    top: 8,
+                    right: 9,
+                    child:
+                        SvgPicture.asset('assets/icons/icon_search_white.svg'),
                   )
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 18.0),
-              child: Text(
-                'Bestsellers',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Container(
+              height: 25,
+              margin: EdgeInsets.only(top: 30),
+              padding: EdgeInsets.only(left: 25),
+              child: DefaultTabController(
+                length: 3,
+                child: TabBar(
+                  labelPadding: EdgeInsets.all(0),
+                  indicatorPadding: EdgeInsets.all(0),
+                  isScrollable: true,
+                  labelColor: kBlackColor,
+                  unselectedLabelColor: kGreyColor,
+                  labelStyle: GoogleFonts.openSans(
+                      fontSize: 14, fontWeight: FontWeight.w700),
+                  unselectedLabelStyle: GoogleFonts.openSans(
+                      fontSize: 14, fontWeight: FontWeight.w600),
+                  indicator: RoundedRectangleTabIndicator(
+                      weight: 2, width: 30, color: kBlackColor),
+                  tabs: [
+                    Tab(
+                      child: Container(
+                        margin: EdgeInsets.only(right: 23),
+                        child: Text('New'),
+                      ),
+                    ),
+                    Tab(
+                      child: Container(
+                        margin: EdgeInsets.only(right: 23),
+                        child: Text('Manga'),
+                      ),
+                    ),
+                    Tab(
+                      child: Container(
+                        margin: EdgeInsets.only(right: 23),
+                        child: Text('Novel'),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
             Container(
-              //  color: Colors.red,
+              margin: EdgeInsets.only(top: 22),
               height: 210,
               child: ListView.builder(
-                  padding: EdgeInsets.only(left: 15),
-                  shrinkWrap: true,
+                  padding: EdgeInsets.only(left: 25, right: 6),
+                  itemCount: newbooks.length,
+                  physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
-                  itemCount: 4,
-                  itemBuilder: (BuildContext context, int index) {
-                    Book books = book[index + 2];
+                  itemBuilder: (context, index) {
                     return Container(
-                      width: 150,
+                      margin: EdgeInsets.only(right: 19),
                       height: 210,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 130,
-                            width: 100,
-                            child: Image.asset(
-                              books.imageUrl,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                            books.title,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            'by ${books.author}',
-                            style: TextStyle(fontSize: 12),
-                          )
-                        ],
-                      ),
+                      width: 153,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: kMainColor,
+                          image: DecorationImage(
+                              image: AssetImage(newbooks[index].image))),
                     );
                   }),
             ),
-            SizedBox(
-              height: 10,
-            ),
             Padding(
-              padding: const EdgeInsets.only(left: 18.0),
+              padding: EdgeInsets.only(left: 25, right: 25),
               child: Text(
-                'Recently Viewed',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                'Other',
+                style: GoogleFonts.openSans(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
+                    color: kBlackColor),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              //  color: Colors.red,
-              height: 210,
-              child: ListView.builder(
-                padding: EdgeInsets.only(left: 15),
+            ListView.builder(
+                padding: EdgeInsets.only(top: 25, left: 25, right: 25),
+                physics: BouncingScrollPhysics(),
                 shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: 3,
-                itemBuilder: (BuildContext context, int index) {
-                  Book books = book[index + 5];
-                  return Container(
-                    width: 150,
-                    height: 210,
-                    //  color: Colors.blue,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 130,
-                          width: 100,
-                          child: Image.asset(
-                            books.imageUrl,
-                            fit: BoxFit.fill,
+                itemCount: populars.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      print('ListView Tapped');
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SelectedBookScreen(
+                                popularBookModel: populars[index])),
+                      );
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(bottom: 19),
+                      height: 81,
+                      width: MediaQuery.of(context).size.width - 50,
+                      color: kBackgroundColor,
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            height: 81,
+                            width: 62,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                image: DecorationImage(
+                                    image: AssetImage(populars[index].image)),
+                                color: kMainColor),
                           ),
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          books.title,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          'by ${books.author}',
-                          style: TextStyle(fontSize: 12),
-                        )
-                      ],
+                          SizedBox(
+                            width: 21,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                populars[index].title,
+                                style: GoogleFonts.openSans(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w600,
+                                    color: kBlackColor),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                populars[index].author,
+                                style: GoogleFonts.openSans(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w400,
+                                    color: kGreyColor),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                populars[index].price,
+                                style: GoogleFonts.openSans(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w600,
+                                    color: kBlackColor),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   );
-                },
-              ),
-            ),
+                })
           ],
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/home.dart';
+import 'package:flutter_application_1/page/store.dart';
 import 'home.dart';
 
 void main() {
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Home(),
       debugShowCheckedModeBanner: false,
+      routes: {"/homeScreen": (_) => new Home()},
     );
   }
 }
