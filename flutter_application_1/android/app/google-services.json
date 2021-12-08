@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "979170318385",
+    "project_id": "testread-fox",
+    "storage_bucket": "testread-fox.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:979170318385:android:9a0b224a878bb11d739d10",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "979170318385-9soo592l0h969sarlvq2otp4nu6eblaq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaPl4aG9xESnePzm2E2itHmxf_nhxohNI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "979170318385-9soo592l0h969sarlvq2otp4nu6eblaq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

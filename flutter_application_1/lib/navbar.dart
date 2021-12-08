@@ -4,12 +4,12 @@ import 'package:flutter_application_1/page/dashboard.dart';
 import 'package:flutter_application_1/page/setting.dart';
 import 'package:flutter_application_1/page/store.dart';
 
-class Home extends StatefulWidget {
+class NavBar extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _NavBarState createState() => _NavBarState();
 }
 
-class _HomeState extends State<Home> {
+class _NavBarState extends State<NavBar> {
   int currentTab = 0;
   final List<Widget> screen = [
     Dashboard(),
@@ -20,7 +20,6 @@ class _HomeState extends State<Home> {
 
   final PageStorageBucket bucket = PageStorageBucket();
   Widget currentScreen = Dashboard();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
