@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
       ),
       home: Home(),
       debugShowCheckedModeBanner: false,
-      routes: {"/homeScreen": (_) => new Home()},
     );
   }
 }

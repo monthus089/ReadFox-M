@@ -26,7 +26,7 @@ class _StoreState extends State<Store> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Store',
+                      'Stor',
                       style: GoogleFonts.openSans(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
@@ -50,6 +50,7 @@ class _StoreState extends State<Store> {
               child: Stack(
                 children: <Widget>[
                   TextField(
+                    // ignore: deprecated_member_use
                     maxLengthEnforced: true,
                     style: GoogleFonts.openSans(
                         fontSize: 12,

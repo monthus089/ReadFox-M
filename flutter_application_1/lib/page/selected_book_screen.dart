@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/color_constant.dart';
+import 'package:flutter_application_1/home.dart';
 import 'package:flutter_application_1/models/popularbook_model.dart';
 import 'package:flutter_application_1/widgets/custom_Tab_indicator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,6 +19,7 @@ class SelectedBookScreen extends StatelessWidget {
         margin: EdgeInsets.only(left: 25, right: 25, bottom: 25),
         height: 49,
         color: Colors.transparent,
+        // ignore: deprecated_member_use
         child: FlatButton(
           color: kRedColor,
           onPressed: () {},
@@ -38,7 +40,7 @@ class SelectedBookScreen extends StatelessWidget {
                 backgroundColor: kMainColor,
                 expandedHeight: MediaQuery.of(context).size.height * 0.5,
                 flexibleSpace: Container(
-                  color: Color(popularBookModel.color),
+                  color: kRedColor,
                   height: MediaQuery.of(context).size.height * 0.5,
                   child: Stack(
                     children: <Widget>[
@@ -47,8 +49,10 @@ class SelectedBookScreen extends StatelessWidget {
                         top: 35,
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.pushReplacementNamed(
-                                context, "/homeScreen");
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return Home();
+                            }));
                           },
                           child: Container(
                             width: 32,
