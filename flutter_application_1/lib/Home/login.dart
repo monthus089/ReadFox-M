@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Home/register.dart';
-import 'package:flutter_application_1/Home/store.dart';
 import 'package:flutter_application_1/models/profrile.dart';
 import 'package:flutter_application_1/page/store.dart';
 

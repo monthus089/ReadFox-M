@@ -9,8 +9,10 @@ import 'package:google_fonts/google_fonts.dart';
 class SelectedBookScreen extends StatelessWidget {
   final PopularBookModel popularBookModel;
 
-  SelectedBookScreen({Key key, @required this.popularBookModel})
-      : super(key: key);
+  SelectedBookScreen({
+    Key key,
+    @required this.popularBookModel,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +51,10 @@ class SelectedBookScreen extends StatelessWidget {
                         top: 35,
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return NavBar();
-                            }));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => NavBar()));
                           },
                           child: Container(
                             width: 32,

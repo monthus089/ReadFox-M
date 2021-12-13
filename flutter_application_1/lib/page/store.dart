@@ -26,7 +26,7 @@ class _StoreState extends State<Store> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Stor',
+                      'Store',
                       style: GoogleFonts.openSans(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
@@ -129,22 +129,38 @@ class _StoreState extends State<Store> {
                   physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.only(right: 19),
-                      height: 210,
-                      width: 153,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: kMainColor,
-                          image: DecorationImage(
-                              image: AssetImage(newbooks[index].image))),
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SelectedBookScreen(
+                                      popularBookModel: populars[index],
+                                    )));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(right: 19),
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              height: 200,
+                              width: 138,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  image: DecorationImage(
+                                      image: AssetImage(populars[index].image)),
+                                  color: kMainColor),
+                            ),
+                          ],
+                        ),
+                      ),
                     );
                   }),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 25, right: 25),
+              padding: EdgeInsets.only(left: 25, right: 25, top: 5),
               child: Text(
-                'Other',
+                'Books',
                 style: GoogleFonts.openSans(
                     fontSize: 22,
                     fontWeight: FontWeight.w600,
@@ -159,12 +175,12 @@ class _StoreState extends State<Store> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      print('ListView Tapped');
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => SelectedBookScreen(
-                                popularBookModel: populars[index])),
+                                  popularBookModel: populars[index],
+                                )),
                       );
                     },
                     child: Container(
