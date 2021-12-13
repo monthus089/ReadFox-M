@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Home/login.dart';
 import 'package:flutter_application_1/Home/register.dart';
+import 'package:flutter_application_1/constants/color_constant.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -62,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                               builder: (context) => LoginScreen()));
                     },
                     shape: RoundedRectangleBorder(
-                        side: BorderSide(color: Colors.black),
+                        side: BorderSide(color: kBlackColor),
                         borderRadius: BorderRadius.circular(50)),
                     child: Text(
                       "Login",
@@ -82,13 +83,13 @@ class HomeScreen extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (context) => RegisterScreen()));
                     },
-                    color: Color(0xffEE5A66),
+                    color: kRedColor,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50)),
                     child: Text(
                       "Sign Up",
                       style: TextStyle(
-                          color: Colors.white,
+                          color: kWhiteColor,
                           fontWeight: FontWeight.w600,
                           fontSize: 18),
                     ),

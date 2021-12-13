@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Home/login.dart';
+import 'package:flutter_application_1/constants/color_constant.dart';
 import 'package:flutter_application_1/models/profrile.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
@@ -37,10 +38,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
           if (snapshot.connectionState == ConnectionState.done) {
             return Scaffold(
               resizeToAvoidBottomInset: false,
-              backgroundColor: Colors.white,
+              backgroundColor: kWhiteColor,
               appBar: AppBar(
                 elevation: 0,
-                backgroundColor: Colors.white,
+                backgroundColor: kWhiteColor,
                 leading: IconButton(
                   onPressed: () {
                     Navigator.pop(context);
@@ -85,8 +86,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         Text(
                           "Create an account, It's free",
-                          style:
-                              TextStyle(fontSize: 15, color: Colors.grey[700]),
+                          style: TextStyle(fontSize: 15, color: kGreyColor),
                         )
                       ]),
                       SizedBox(
@@ -161,7 +161,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
           filled: true,
           labelText: "UserName",
-          hintStyle: TextStyle(color: Colors.grey),
+          hintStyle: TextStyle(color: kGreyColor),
           hintText: "UserName",
           fillColor: Colors.white70),
       validator: RequiredValidator(errorText: "กรุณากรอกUserName"),
@@ -181,7 +181,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             filled: true,
             labelText: "Email",
-            hintStyle: TextStyle(color: Colors.grey),
+            hintStyle: TextStyle(color: kGreyColor),
             hintText: "Email",
             fillColor: Colors.white70),
         validator: MultiValidator([
@@ -218,7 +218,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   filled: true,
                   labelText: "Password",
-                  hintStyle: TextStyle(color: Colors.grey),
+                  hintStyle: TextStyle(color: kGreyColor),
                   hintText: "Password",
                   fillColor: Colors.white70),
               validator: (value) {
@@ -306,13 +306,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
         }
       },
-      color: Color(0xffEE5A66),
+      color: kRedColor,
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
       child: Text(
         "Sign Up",
         style: TextStyle(
-            fontWeight: FontWeight.w600, fontSize: 18, color: Colors.white),
+            fontWeight: FontWeight.w600, fontSize: 18, color: kWhiteColor),
       ),
     );
   }

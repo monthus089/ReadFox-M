@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Home/register.dart';
+import 'package:flutter_application_1/constants/color_constant.dart';
 import 'package:flutter_application_1/models/profrile.dart';
 import 'package:flutter_application_1/page/store.dart';
 
@@ -65,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                    color: Colors.grey[700]),
+                    color: kGreyColor),
               )
             ],
           ),
@@ -142,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             filled: true,
             labelText: "Email",
-            hintStyle: TextStyle(color: Colors.grey),
+            hintStyle: TextStyle(color: kGreyColor),
             hintText: "Email",
             fillColor: Colors.white70),
         validator: MultiValidator([
@@ -170,7 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
           },
         ),
         filled: true,
-        hintStyle: TextStyle(color: Colors.grey),
+        hintStyle: TextStyle(color: kGreyColor),
         labelText: "Password",
         hintText: "Password",
         fillColor: Colors.white70,
@@ -223,7 +224,7 @@ class _LoginScreenState extends State<LoginScreen> {
           }
         }
       },
-      color: Color(0xffEE5A66),
+      color: kRedColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
       child: Text(
         "Login",
