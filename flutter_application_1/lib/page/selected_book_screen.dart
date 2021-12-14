@@ -39,6 +39,7 @@ class SelectedBookScreen extends StatelessWidget {
           child: CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
+                automaticallyImplyLeading: false,
                 backgroundColor: kMainColor,
                 expandedHeight: MediaQuery.of(context).size.height * 0.5,
                 flexibleSpace: Container(
