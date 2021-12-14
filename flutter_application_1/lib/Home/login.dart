@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Home/register.dart';
 import 'package:flutter_application_1/constants/color_constant.dart';
 import 'package:flutter_application_1/models/profrile.dart';
-import 'package:flutter_application_1/page/store.dart';
+import 'package:flutter_application_1/navbar.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -215,7 +215,7 @@ class _LoginScreenState extends State<LoginScreen> {
               formkey.currentState.reset();
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) {
-                return Store();
+                return NavBar();
               }));
             });
           } on FirebaseAuthException catch (e) {

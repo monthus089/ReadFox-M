@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/navbar.dart';
+import 'package:flutter_application_1/Home/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: NavBar(),
+      home: HomeScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
