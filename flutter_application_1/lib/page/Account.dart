@@ -42,12 +42,10 @@ class _AccountState extends State<Account> {
                     ),
                     Column(
                       children: <Widget>[
-                        Container(
-                          height: MediaQuery.of(context).size.height / 3,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image:
-                                      AssetImage("assets/icons/welcom.png"))),
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundImage:
+                              AssetImage("assets/icons/welcom.png"),
                         ),
                         SizedBox(
                           height: 30,
@@ -75,7 +73,7 @@ class _AccountState extends State<Account> {
 
   MaterialButton logout() {
     return MaterialButton(
-      minWidth: 200,
+      minWidth: 400,
       height: 60,
       onPressed: () {
         showDialog(
@@ -104,10 +102,9 @@ class _AccountState extends State<Account> {
               );
             });
       },
-      color: Color(0xffEE5A66),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+      color: kRedColor,
       child: Text(
-        "LogOut",
+        "Log Out",
         style: TextStyle(
             fontWeight: FontWeight.w600, fontSize: 18, color: Colors.white),
       ),
