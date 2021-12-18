@@ -11,6 +11,7 @@ class Account extends StatefulWidget {
 
 class _AccountState extends State<Account> {
   final auth = FirebaseAuth.instance;
+  int cash = 120;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +20,7 @@ class _AccountState extends State<Account> {
           physics: BouncingScrollPhysics(),
           children: <Widget>[
             Padding(
-                padding: EdgeInsets.only(left: 25, top: 25),
+                padding: EdgeInsets.only(left: 25, top: 25, right: 25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -40,29 +41,75 @@ class _AccountState extends State<Account> {
                     SizedBox(
                       height: 30,
                     ),
-                    Column(
-                      children: <Widget>[
-                        CircleAvatar(
-                          radius: 50,
-                          backgroundImage:
-                              AssetImage("assets/icons/welcom.png"),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Text(
-                          auth.currentUser.email.toString(),
-                          style: TextStyle(fontSize: 30),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Align(
-                          alignment: Alignment.center,
-                          child: logout(),
-                        ),
+                    Stack(
+                      children: [
+                        Positioned(
+                            child: Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 50,
+                              backgroundImage:
+                                  AssetImage("assets/icons/welcom.png"),
+                            ),
+                          ],
+                        )),
+                        Positioned(
+                            top: 10,
+                            right: 30,
+                            child: Row(
+                              children: [
+                                Text(
+                                  auth.currentUser.email.toString(),
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                              ],
+                            )),
+                        Positioned(
+                            top: 45,
+                            right: 90,
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  "assets/icons/money.png",
+                                  width: 30,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  cash.toString(),
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  'เติมเงิน',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            ))
                       ],
-                    )
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 1,
+                      color: Colors.grey[400],
+                    ),
+                    SizedBox(
+                      height: 80,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: logout(),
+                    ),
                   ],
                 )),
           ],
@@ -73,7 +120,7 @@ class _AccountState extends State<Account> {
 
   MaterialButton logout() {
     return MaterialButton(
-      minWidth: 400,
+      minWidth: 200,
       height: 60,
       onPressed: () {
         showDialog(
@@ -103,6 +150,7 @@ class _AccountState extends State<Account> {
             });
       },
       color: kRedColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
       child: Text(
         "Log Out",
         style: TextStyle(
