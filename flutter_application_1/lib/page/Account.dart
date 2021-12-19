@@ -99,6 +99,76 @@ class _AccountState extends State<Account> {
                       height: 1,
                       color: Colors.grey[400],
                     ),
+<<<<<<< HEAD
+=======
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Icon(
+                          Icons.description,
+                          size: 40,
+                        ),
+                        SizedBox(
+                          width: 40,
+                        ),
+                        Text(
+                          'Version',
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.w300),
+                        ),
+                        SizedBox(
+                          width: 50,
+                        ),
+                        Text(
+                          '1.0.1',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w400),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 1,
+                      color: Colors.grey[400],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Icon(
+                          Icons.portrait,
+                          size: 40,
+                        ),
+                        SizedBox(
+                          width: 40,
+                        ),
+                        Text(
+                          'Edit Profile',
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.w300),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 1,
+                      color: Colors.grey[400],
+                    ),
                     SizedBox(
                       height: 20,
                     ),
@@ -170,9 +240,14 @@ class _AccountState extends State<Account> {
                     SizedBox(
                       height: 80,
                     ),
+>>>>>>> 7afdafa47e619318fa7c253152e8498094194531
                     Align(
-                      alignment: Alignment.center,
                       child: logout(),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 1,
+                      color: Colors.grey[400],
                     ),
                   ],
                 )),
@@ -197,7 +272,7 @@ class _AccountState extends State<Account> {
 
   MaterialButton logout() {
     return MaterialButton(
-      minWidth: 200,
+      minWidth: double.infinity,
       height: 60,
       onPressed: () {
         showDialog(
@@ -226,12 +301,11 @@ class _AccountState extends State<Account> {
               );
             });
       },
-      color: kRedColor,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
       child: Text(
         "Log Out",
         style: TextStyle(
-            fontWeight: FontWeight.w600, fontSize: 18, color: Colors.white),
+            fontWeight: FontWeight.w600, fontSize: 18, color: kBlackColor),
       ),
     );
   }

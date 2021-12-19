@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/color_constant.dart';
-import 'package:flutter_application_1/models/newbook_model.dart';
 import 'package:flutter_application_1/models/popularbook_model.dart';
 import 'package:flutter_application_1/navbar.dart';
 
@@ -126,7 +125,7 @@ class _StoreState extends State<Store> {
               height: 210,
               child: ListView.builder(
                   padding: EdgeInsets.only(left: 25, right: 6),
-                  itemCount: newbooks.length - 1,
+                  itemCount: populars.length,
                   physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
@@ -149,8 +148,7 @@ class _StoreState extends State<Store> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 image: DecorationImage(
-                                    image:
-                                        AssetImage(populars[index - 5].image)),
+                                    image: AssetImage(populars[index].image)),
                               ),
                             ),
                           ],
