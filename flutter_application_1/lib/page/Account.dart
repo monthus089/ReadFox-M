@@ -66,12 +66,13 @@ class _AccountState extends State<Account> {
                             )),
                         Positioned(
                             top: 45,
-                            right: 90,
+                            right: 50,
                             child: Row(
                               children: [
-                                Image.asset(
-                                  "assets/icons/money.png",
-                                  width: 30,
+                                Icon(
+                                  Icons.local_atm,
+                                  color: kRedColor,
+                                  size: 30,
                                 ),
                                 SizedBox(
                                   width: 10,
@@ -83,16 +84,79 @@ class _AccountState extends State<Account> {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 SizedBox(
-                                  width: 10,
+                                  width: 20,
                                 ),
-                                Text(
-                                  'เติมเงิน',
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w500),
-                                ),
+                                cashs()
                               ],
                             ))
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 1,
+                      color: Colors.grey[400],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Icon(
+                          Icons.description,
+                          size: 40,
+                        ),
+                        SizedBox(
+                          width: 40,
+                        ),
+                        Text(
+                          'Version',
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.w300),
+                        ),
+                        SizedBox(
+                          width: 50,
+                        ),
+                        Text(
+                          '1.0.1',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w400),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 1,
+                      color: Colors.grey[400],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Icon(
+                          Icons.portrait,
+                          size: 40,
+                        ),
+                        SizedBox(
+                          width: 40,
+                        ),
+                        Text(
+                          'Edit Profile',
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.w300),
+                        ),
                       ],
                     ),
                     SizedBox(
@@ -118,6 +182,19 @@ class _AccountState extends State<Account> {
     );
   }
 
+  MaterialButton cashs() {
+    return MaterialButton(
+      onPressed: () {},
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+      color: kRedColor,
+      child: Text(
+        "เติมเงิน",
+        style: TextStyle(
+            fontWeight: FontWeight.w500, fontSize: 18, color: Colors.white),
+      ),
+    );
+  }
+
   MaterialButton logout() {
     return MaterialButton(
       minWidth: 200,
@@ -127,7 +204,7 @@ class _AccountState extends State<Account> {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text('อกกจากระบบ'),
+                title: Text('ออกจากระบบ'),
                 content: Text('คุณแน่ใจนะว่าต้องการออกจากระบบ'),
                 actions: <Widget>[
                   MaterialButton(
