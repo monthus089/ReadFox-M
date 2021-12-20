@@ -80,7 +80,7 @@ class _CartState extends State<Cart> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      Text('Total: \$' + totalAmount.toString()),
+                      Text('Total: ' + totalAmount.toString()),
                       SizedBox(width: 10.0),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
