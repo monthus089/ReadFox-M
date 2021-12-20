@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/color_constant.dart';
 import 'package:flutter_application_1/models/popularbook_model.dart';
+import 'package:flutter_application_1/navbar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Dashboard extends StatefulWidget {
+class Library extends StatefulWidget {
   @override
-  _DashboardState createState() => _DashboardState();
+  _LibraryState createState() => _LibraryState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _LibraryState extends State<Library> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +85,11 @@ class _DashboardState extends State<Dashboard> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      print('Click is ready');
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ReadBookScreen()),
+                      );
                     },
                     child: Container(
                       margin: EdgeInsets.only(bottom: 19),
@@ -127,6 +132,78 @@ class _DashboardState extends State<Dashboard> {
                               ),
                             ],
                           )
+                        ],
+                      ),
+                    ),
+                  );
+                })
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ReadBookScreen extends StatefulWidget {
+  @override
+  _ReadBookScreenState createState() => _ReadBookScreenState();
+}
+
+class _ReadBookScreenState extends State<ReadBookScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        child: ListView(
+          children: <Widget>[
+            Padding(
+                padding: EdgeInsets.only(left: 15, top: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Positioned(
+                      left: 25,
+                      top: 35,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => NavBar()));
+                        },
+                        child: Container(
+                          width: 32,
+                          height: 32,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: kWhiteColor),
+                          child: SvgPicture.asset(
+                              'assets/icons/icon_back_arrow.svg'),
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
+            Padding(padding: EdgeInsets.only(top: 15)),
+            ListView.builder(
+                physics: BouncingScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: populars.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      color: kBackgroundColor,
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            height: 500,
+                            width: 392.4,
+                            child: FittedBox(
+                              fit: BoxFit.fill,
+                              child: Image.asset(populars[index].image),
+                            ),
+                          ),
                         ],
                       ),
                     ),

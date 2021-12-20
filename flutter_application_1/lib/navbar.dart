@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/page/Account.dart';
-import 'package:flutter_application_1/page/dashboard.dart';
-import 'package:flutter_application_1/page/setting.dart';
-import 'package:flutter_application_1/page/store.dart';
+import 'page/account.dart';
+import 'page/cart.dart';
+import 'page/library.dart';
+import 'page/setting.dart';
+import 'page/store.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -12,14 +13,15 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int currentTab = 0;
   final List<Widget> screen = [
-    Dashboard(),
+    Library(),
     Store(),
     Account(),
     Setting(),
+    Cart(),
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = Dashboard();
+  Widget currentScreen = Library();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +34,11 @@ class _NavBarState extends State<NavBar> {
           Icons.shopping_cart,
           color: currentTab == 0 ? Colors.white : Colors.white,
         ),
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+            currentScreen = Cart();
+          });
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
@@ -50,7 +56,7 @@ class _NavBarState extends State<NavBar> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentScreen = Dashboard();
+                        currentScreen = Library();
                         currentTab = 0;
                       });
                     },
