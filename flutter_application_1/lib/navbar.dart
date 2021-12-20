@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'page/account.dart';
 import 'page/cart.dart';
 import 'page/library.dart';
@@ -18,7 +17,7 @@ class _NavBarState extends State<NavBar> {
     Store(),
     Account(),
     Setting(),
-    Cart()
+    Cart(),
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();

@@ -99,8 +99,6 @@ class _AccountState extends State<Account> {
                       height: 1,
                       color: Colors.grey[400],
                     ),
-<<<<<<< HEAD
-=======
                     SizedBox(
                       height: 20,
                     ),
@@ -240,7 +238,6 @@ class _AccountState extends State<Account> {
                     SizedBox(
                       height: 80,
                     ),
->>>>>>> 7afdafa47e619318fa7c253152e8498094194531
                     Align(
                       child: logout(),
                     ),

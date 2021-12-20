@@ -8,9 +8,9 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
-  List picked = [false, false];
+  List picked = [false, false, false];
 
-  int totalAmount = 0;
+  int totalAmount;
 
   pickToggle(index) {
     setState(() {
@@ -27,7 +27,7 @@ class _CartState extends State<Cart> {
       }
       if (i == picked.length - 1) {
         setState(() {
-          totalAmount = 249 * count;
+          totalAmount = 259 * count;
         });
       }
     }
@@ -69,7 +69,7 @@ class _CartState extends State<Cart> {
               itemCard('assets/images/b8.png', 'Mushoku Tensei 8', 'gray',
                   '249', true, 1),
               itemCard('assets/images/b9.png', 'Mushoku Tensei 9', 'gray',
-                  '249', false, 2),
+                  '249', true, 2),
               SizedBox(
                 height: 10,
               ),
@@ -146,7 +146,7 @@ class _CartState extends State<Cart> {
                                     width: 12.0,
                                     decoration: BoxDecoration(
                                         color: picked[i]
-                                            ? Colors.yellow
+                                            ? Colors.red
                                             : Colors.grey.withOpacity(0.4),
                                         borderRadius:
                                             BorderRadius.circular(6.0)),
