@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/color_constant.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,33 +13,153 @@ class _SettingState extends State<Setting> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        padding: EdgeInsets.only(left: 16, top: 25, right: 16),
         child: ListView(
-          physics: BouncingScrollPhysics(),
-          children: <Widget>[
+          children: [
+            Text(
+              'Store',
+              style: GoogleFonts.openSans(
+                  fontSize: 14, fontWeight: FontWeight.w600, color: kGreyColor),
+            ),
+            Text(
+              'ReadFox Store',
+              style: GoogleFonts.openSans(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w600,
+                  color: kBlackColor),
+            ),
             Padding(
-                padding: EdgeInsets.only(left: 25, top: 25),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'Setting',
-                      style: GoogleFonts.openSans(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: kGreyColor),
-                    ),
-                    Text(
-                      'App Setting',
-                      style: GoogleFonts.openSans(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w600,
-                          color: kBlackColor),
-                    )
-                  ],
-                )),
+              padding: EdgeInsets.only(top: 16),
+            ),
+            Row(
+              children: [
+                Icon(
+                  Icons.person,
+                  color: kRedColor,
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  "App",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            Divider(
+              height: 15,
+              thickness: 2,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            buildAppOptionRow(context, "Theme"),
+            buildAppOptionRow(context, "Language"),
+            buildAppOptionRow(context, "Privacy and security"),
+            SizedBox(
+              height: 40,
+            ),
+            Row(
+              children: [
+                Icon(
+                  Icons.volume_up_outlined,
+                  color: kRedColor,
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  "Notifications",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            Divider(
+              height: 15,
+              thickness: 2,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            buildNotificationOptionRow("News"),
+            buildNotificationOptionRow("Massage"),
+            SizedBox(
+              height: 50,
+            ),
           ],
         ),
       ),
     );
   }
+}
+
+Row buildNotificationOptionRow(String title) {
+  var isActive = false;
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(
+        title,
+        style: TextStyle(
+            fontSize: 18, fontWeight: FontWeight.w500, color: Colors.grey[600]),
+      ),
+      Transform.scale(
+        scale: 0.7,
+        child: CupertinoSwitch(
+          value: isActive,
+          onChanged: (bool value) {},
+        ),
+      )
+    ],
+  );
+}
+
+GestureDetector buildAppOptionRow(BuildContext context, String title) {
+  return GestureDetector(
+    onTap: () {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(title),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("Option 1"),
+                  Text("Option 2"),
+                  Text("Option 3"),
+                ],
+              ),
+              actions: [
+                // ignore: deprecated_member_use
+                FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text("Close")),
+              ],
+            );
+          });
+    },
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              color: Colors.grey[600],
+            ),
+          ),
+          Icon(
+            Icons.arrow_forward_ios,
+            color: Colors.grey,
+          ),
+        ],
+      ),
+    ),
+  );
 }
