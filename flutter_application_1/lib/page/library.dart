@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/color_constant.dart';
+import 'package:flutter_application_1/models/bookread_model.dart';
 import 'package:flutter_application_1/models/popularbook_model.dart';
 import 'package:flutter_application_1/navbar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -188,7 +189,7 @@ class _ReadBookScreenState extends State<ReadBookScreen> {
             ListView.builder(
                 physics: BouncingScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: populars.length,
+                itemCount: bookdata.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {},
@@ -201,7 +202,7 @@ class _ReadBookScreenState extends State<ReadBookScreen> {
                             width: 392.4,
                             child: FittedBox(
                               fit: BoxFit.fill,
-                              child: Image.asset(populars[index].image),
+                              child: Image.asset(bookdata[index].images),
                             ),
                           ),
                         ],
