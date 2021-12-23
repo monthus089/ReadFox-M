@@ -53,9 +53,9 @@ class _SettingState extends State<Setting> {
             SizedBox(
               height: 10,
             ),
-            buildAppOptionRow(context, "Theme"),
-            buildAppOptionRow(context, "Language"),
-            buildAppOptionRow(context, "Privacy and security"),
+            buildAppOptionRowTheme(context, "Theme"),
+            buildAppOptionRowLanguage(context, "Language"),
+            buildAppOptionRowSecurity(context, "Privacy and security"),
             SizedBox(
               height: 40,
             ),
@@ -114,7 +114,7 @@ Row buildNotificationOptionRow(String title) {
   );
 }
 
-GestureDetector buildAppOptionRow(BuildContext context, String title) {
+GestureDetector buildAppOptionRowTheme(BuildContext context, String title) {
   return GestureDetector(
     onTap: () {
       showDialog(
@@ -125,9 +125,114 @@ GestureDetector buildAppOptionRow(BuildContext context, String title) {
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text("Option 1"),
-                  Text("Option 2"),
-                  Text("Option 3"),
+                  Text("White"),
+                  Text("Dark"),
+                ],
+              ),
+              actions: [
+                // ignore: deprecated_member_use
+                FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text("Close")),
+              ],
+            );
+          });
+    },
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              color: Colors.grey[600],
+            ),
+          ),
+          Icon(
+            Icons.arrow_forward_ios,
+            color: Colors.grey,
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+GestureDetector buildAppOptionRowLanguage(BuildContext context, String title) {
+  return GestureDetector(
+    onTap: () {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(title),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("ไทย"),
+                  Text("English"),
+                ],
+              ),
+              actions: [
+                // ignore: deprecated_member_use
+                FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text("Close")),
+              ],
+            );
+          });
+    },
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              color: Colors.grey[600],
+            ),
+          ),
+          Icon(
+            Icons.arrow_forward_ios,
+            color: Colors.grey,
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+GestureDetector buildAppOptionRowSecurity(BuildContext context, String title) {
+  return GestureDetector(
+    onTap: () {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(title),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("On"),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 1,
+                    color: Colors.grey[400],
+                  ),
+                  Text("Off"),
                 ],
               ),
               actions: [
